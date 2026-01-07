@@ -12,6 +12,6 @@ type Employees struct {
 	EmployeeCode string  `valid:"required~EmployeeCode must be 2 uppercase English letters (A-Z) followed by ‘-’ and 4 digits (0-9)"` // รหัสพนักงานต้องเป็นอักษรอังกฤษตัวใหญ่ 2 ตัว ตามด้วย "-" และตัวเลข 4 ตัว (เช่น "HR-1024")
 }
 
-func validator(e *Employees) (bool, error) {
+func (e *Employees) validate()(bool, error) {
 	return govalidator.ValidateStruct(e)
 }

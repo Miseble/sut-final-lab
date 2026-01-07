@@ -8,20 +8,20 @@ import(
 	. "github.com/onsi/gomega"
 )
 
-func EmployeesTestValid(t *testing.T){
+func EmployeesNegativesTestValid(t *testing.T){
 	g := NewGomegaWithT(t)
 
-	t.Run("EmployeeCode is valid", func (t *testing.T) {
+	t.Run("pass", func (t *testing.T) {
 		e := Employees{
 			Name: "qwer",
 			Salary: 150000,
-			EmployeeCode: "qw-1412",
+			EmployeeCode: "",
 		}
 	})
 	
 	ok, err := govalidator.ValidateStruct(e)
 	Expect(ok).To(Equal(""))
-	Expect(err).To(Equal(""))
+	Expect(err).To(Equal("EmployeeCode must be 2 uppercase English letters (A-Z) followed by ‘-’ and 4 digits (0-9)"))
 
 	
 }
